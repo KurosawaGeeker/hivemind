@@ -1,0 +1,88 @@
+```yaml
+name: 🐛 Bug 报告
+description: 报告 snaplog 的问题或异常行为
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你花时间报告问题！请尽量填写以下信息，帮助我们快速定位。
+
+  - type: input
+    id: version
+    attributes:
+      label: snaplog 版本
+      description: "运行 `snaplog --version` 获取"
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: python-version
+    attributes:
+      label: Python 版本
+      description: "运行 `python --version` 获取"
+      placeholder: "3.10.12"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 清晰简洁地描述遇到的问题
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 提供最小复现步骤
+      value: |
+        1. 准备日志文件（内容示例）：
+           ```
+           2026-02-24 10:00:00 ERROR something broke
+           ```
+        2. 运行命令：
+           ```bash
+           snaplog filter --level ERROR test.log
+           ```
+        3. 观察到的行为：...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为
+      description: 你期望发生什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误输出 / 堆栈信息
+      description: 粘贴完整的终端输出
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 补充信息
+      description: 任何有助于排查的额外上下文（截图、日志文件片段等）
+```
